@@ -1,0 +1,24 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (런타임 생성 파일)
+src/data/calibration/*.json
+src/data/maps/
+src/data/sessions/
+
+# PlatformIO 빌드
+src/firmware/cam_node/.pio/
+
+# Claude Code
+.claude/

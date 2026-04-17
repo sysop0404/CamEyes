@@ -1,0 +1,22 @@
+# CamEyes - Python Dependencies
+# Install: pip install -r requirements.txt
+
+# Core
+numpy>=1.24
+opencv-python>=4.8
+opencv-contrib-python>=4.8
+PyYAML>=6.0
+
+# Stream / Network
+requests>=2.31
+urllib3>=2.0
+
+# Visualization
+matplotlib>=3.7
+open3d>=0.17
+
+# Object Detection (Phase 4)
+# ultralytics>=8.0
+
+# 3D Reconstruction (Phase 5)
+# nerfstudio  # install separately if needed
