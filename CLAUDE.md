@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Status
 
-**Phase 1 진행 중** — 디렉토리 구조, Python 환경, 펌웨어 스켈레톤, 스트림 수신기, 캘리브레이션 도구 작성 완료. ESP32-S3-CAM 배송 대기 중 (2026-04-22~27 예상).
+**Phase 1 소프트웨어 완료, 하드웨어 배송 대기** — 디렉토리 구조, Python 환경, 펌웨어 스켈레톤(카메라), 스트림/IMU 수신기, 프레임 동기화, 스테레오 깊이(SGBM), 3D 시각화, 통합 파이프라인, 캘리브레이션 도구, FreeCAD 리그 매크로, ChArUco 보드 이미지 작성 완료. ESP32-S3-CAM 배송 대기 중 (2026-04-22~27 예상).
 
 ## Project Concept
 
@@ -87,18 +87,20 @@ CamEyes/
 └── src/                     # 프로그램소스
     ├── firmware/cam_node/       ESP32-S3 펌웨어 (PlatformIO)
     ├── server/
-    │   ├── config/config.yaml   설정 파일
-    │   ├── capture/             스트림 수신기
-    │   ├── calibration/         캘리브레이션 도구
-    │   └── (slam, viz, ...)     추후 개발
-    └── data/                    런타임 데이터
+    │   ├── main.py             통합 파이프라인
+    │   ├── config/config.yaml  설정 파일
+    │   ├── capture/            스트림/IMU 수신기, 프레임 동기화
+    │   ├── calibration/        ChArUco 캘리브레이션 도구
+    │   ├── slam/               스테레오 깊이 (SGBM)
+    │   └── viz/                3D 시각화 (Open3D)
+    └── data/                    런타임 데이터 (캘리브레이션 이미지 등)
 ```
 
 ## Development Phases
 
-1. **Infrastructure** — 펌웨어 + 수신기 + 안정 스트리밍 10분+ ← **진행 중**
-2. **Calibration** — 내부/외부 파라미터 캘리브레이션
-3. **SLAM basic** — 이동하며 실시간 3D 포인트 클라우드
+1. **Infrastructure** — 펌웨어 + 수신기 + 안정 스트리밍 10분+ ← **SW 완료, HW 대기**
+2. **Calibration** — 내부/외부 파라미터 캘리브레이션 (도구 완료, 실행 대기)
+3. **SLAM basic** — 이동하며 실시간 3D 포인트 클라우드 (깊이 모듈 완료, SLAM 통합 대기)
 4. **Spatial perception** — 밀집 매핑, 객체 검출, 다중 방
 5. (연기) 로봇 모드 / HDR
 6. (추후) 사물 3D 스캔 모드
